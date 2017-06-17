@@ -1,3 +1,8 @@
+(*
+  WARNING: I've posted this profile script as an example of how to
+  measure performance in a way that yields misleading/wrong results.
+*)
+
 open Unix
 open Printf
 
@@ -20,7 +25,7 @@ let measure m n mapper label =
       let () = mapper ((+)1) testlist |> ignore in
       let t1 = Unix.gettimeofday () in
       let delta = (t1 -. t0) *. 1e6 in
-      Gc.full_major;
+      Gc.full_major; (* Problem: This masks the cost of GC. *)
       repeat testlist (delta :: accum) (n - 1)
   in
   let testlist = make_list m in
