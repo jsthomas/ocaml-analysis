@@ -35,5 +35,6 @@ let () =
     let n = Batteries.Int.pow 10 k in
     let testlist = make_list n in
     Printf.printf "Testing Lists of Size %d\n" n;
-    Core.Command.run (Bench.make_command (List.map (make_test testlist) mappers))
+    Core.Command.run
+      (Bench.make_command (List.map (make_test testlist) mappers))
   done
