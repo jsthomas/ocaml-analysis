@@ -8,4 +8,4 @@ bufftest.native: bufftest.ml
 	$(CC) -package $(PACKAGES) $< -o $@
 
 clean:
-	/bin/rm -rf *.native
+	/bin/rm -rf *.native *.cm* *.o
